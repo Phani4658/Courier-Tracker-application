@@ -1,29 +1,33 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
 import "./index.css";
-import {  useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
-
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname } = location;
 
   const onSuccessfulLogin = (jwtToken) => {
-    Cookies.set("jwt_token",jwtToken,{expires: 30});
-    navigate("/");
-  }
-
+    Cookies.set("jwt_token", jwtToken, { expires: 30 });
+    console.log(jwtToken);
+    pathname === "/login" ? navigate("/") : navigate("/admin");
+  };
 
   const onLoginFailure = (errorMessage) => {
     setErrorMessage(errorMessage);
-  }
+  };
 
   const onClickLogin = async (e) => {
     e.preventDefault();
-    const apiUrl = "http://localhost:3015/login";
+    const apiUrl =
+      pathname === "/login"
+        ? "http://localhost:3015/login"
+        : "http://localhost:3015/admin/login";
     const userDetails = {
       username,
       password,
@@ -40,8 +44,12 @@ function Login() {
     try {
       const response = await fetch(apiUrl, options);
       const data = await response.json();
-      console.log(data.token);
-      onSuccessfulLogin(data.token);
+      if (response.ok) {
+        console.log(data.token);
+        onSuccessfulLogin(data.token);
+      } else {
+        onLoginFailure(data.message);
+      }
     } catch (e) {
       onLoginFailure(e.message);
     }
@@ -52,7 +60,9 @@ function Login() {
       <Navbar />
       <div className="login-form-container">
         <form>
-          <h1 className="login-heading">Login</h1>
+          <h1 className="login-heading">
+            {pathname === "/login" ? "Login" : "Admin Login"}
+          </h1>
           <div className="input-field-container">
             <label>Username</label> <br />
             <input
@@ -72,8 +82,9 @@ function Login() {
                 setPassword(e.target.value);
               }}
             />
+            <p className="error-msg">{errorMessage}</p>
           </div>
-          <p>{errorMessage}</p>
+
           <button className="login-button" onClick={onClickLogin}>
             Login
           </button>

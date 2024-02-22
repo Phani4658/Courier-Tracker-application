@@ -1,0 +1,24 @@
+.top-section{
+    height: 35vh;
+    background-color: darkorange;
+}
+
+.tracking-number-form{
+    background: transparent;
+}
+
+.tracking-form-container{
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+    align-items: center;
+}
+
+.tracking-heading{
+    text-align: center;
+}
+
+.tracking-input{
+    width: 480px;
+    margin-right: 15px;
+}

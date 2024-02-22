@@ -1,0 +1,29 @@
+.courier-item{
+    list-style: none;
+    display: flex;
+    background: #e9e7e7;
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul{
+    padding: 0 20px;
+}
+
+.icons-container{
+    display: flex;
+    font-size: 18px;
+    gap: 8px;
+}
+
+.icon{
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    padding: 2px 4px;
+    border-radius: 6px;
+    cursor: pointer;
+}
