@@ -5,6 +5,7 @@ import "./index.css";
 function LoginForm({ errorMessage, loginUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  console.log(errorMessage);
 
   return (
     <form
@@ -29,7 +30,6 @@ function LoginForm({ errorMessage, loginUser }) {
           setPassword(e.target.value);
         }}
       />
-
       <p className="error-msg">{errorMessage}</p>
 
       <button className="login-button" type="submit">

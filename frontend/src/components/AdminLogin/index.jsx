@@ -23,7 +23,6 @@ function AdminLogin() {
   };
 
   const onClickLogin = async (username, password, event) => {
-    console.log(event);
     event.preventDefault();
     const apiUrl = "https://courier-tracker-backend.onrender.com/admin/login";
     const userDetails = {

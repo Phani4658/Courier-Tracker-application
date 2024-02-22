@@ -1,25 +1,21 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const { pathname } = location;
-  console.log(!(pathname !== "/admin" || pathname !== "/admin/login"))
   return (
     <nav>
-      <h1 className="nav-heading">Courier Tracker</h1>
-      {(pathname !== "/admin" || pathname !== "/admin/login") ? (
+      <div className="button-container">
+        <h1>Courier Tracker</h1>
         <button
-          className="admin-login"
+          className="admin-button"
           onClick={() => {
-            navigate("/admin/login");
+            navigate("/");
           }}
         >
-          Admin Login
+          Home
         </button>
-      ) : null}
+      </div>
     </nav>
   );
 }

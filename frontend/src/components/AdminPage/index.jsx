@@ -39,6 +39,7 @@ function AdminPage() {
   };
 
   const getCouriersList = async () => {
+    setApiStatus(APIStatusConstants.LOADING);
     const apiUrl =
       "https://courier-tracker-backend.onrender.com/admin/couriers";
     const jwtToken = Cookies.get("admin_jwt_token");
