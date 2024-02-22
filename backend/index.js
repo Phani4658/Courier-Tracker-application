@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 
-// Initialize routes
+//routes
 app.use('/',authRoutes)
 app.use('/', adminRoutes);
 app.use('/', trackingRoutes);
 
-// Connect to the database
+// Connect to the db
 db.connect()
   .then(() => {
     app.listen(process.env.PORT, () => {
