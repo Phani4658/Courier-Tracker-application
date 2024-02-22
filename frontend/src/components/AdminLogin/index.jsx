@@ -22,7 +22,7 @@ function AdminLogin() {
     setErrorMessage(errorMessage);
   };
 
-  const onClickLogin = async (username, password,event) => {
+  const onClickLogin = async (username, password, event) => {
     console.log(event);
     event.preventDefault();
     const apiUrl = "https://courier-tracker-backend.onrender.com/admin/login";
@@ -58,7 +58,7 @@ function AdminLogin() {
       <div className="login-form-container">
         <div className="admin-left-part left-part">
           <img
-            src="https://img.freepik.com/free-vector/dashboard-concept-illustration_114360-1447.jpg?t=st=1708623854~exp=1708627454~hmac=0bb030057d5cd4b7a7b632a670fd8a9b4bd6be59f4378f509556dc078f568f06&w=826"
+            src="https://img.freepik.com/free-vector/business-people-working-with-data-computers_1262-19732.jpg?t=st=1708623817~exp=1708627417~hmac=20539443f36f00d7299cf8eeae36a1f3772a68db460d2d5a5ee32a8562dd2b2e&w=1380"
             alt="courier tracking"
           />
           <h2 className="login-form-heading">Manage your couriers with ease</h2>
