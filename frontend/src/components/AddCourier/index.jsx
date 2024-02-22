@@ -23,7 +23,7 @@ function AddCourier() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const jwtToken = Cookies.get("jwt_token");
+    const jwtToken = Cookies.get("admin_jwt_token");
     setLoading(true);
 
     try {
