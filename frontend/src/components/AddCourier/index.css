@@ -1,0 +1,74 @@
+/* CourierForm.css */
+.courier-form-container {
+    width: 40%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .courier-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .courier-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .courier-form label {
+    margin-bottom: 8px;
+  }
+  
+  .courier-form input,.courier-form select {
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    background: none;
+    width: 100%;
+    border-radius: 5px;
+    color: #000;
+  }
+  
+  .courier-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .courier-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  
+  .courier-form select {
+    width: 100%;
+  }
+  
+  /* Style the select dropdown arrow */
+  .courier-form select::-ms-expand {
+    display: none;
+  }
+  .courier-form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 30px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 16px auto;
+  }
+
+  .read-only-input {
+  background-color: #f9f9f9 !important;
+  color: #333 !important;
+  cursor: not-allowed;
+}

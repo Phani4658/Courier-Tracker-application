@@ -6,11 +6,11 @@ function Navbar() {
   const location = useLocation();
 
   const { pathname } = location;
-
+  console.log(!(pathname !== "/admin" || pathname !== "/admin/login"))
   return (
     <nav>
       <h1 className="nav-heading">Courier Tracker</h1>
-      {!(pathname !== "/admin" || pathname !== "/admin/login") && (
+      {(pathname !== "/admin" || pathname !== "/admin/login") ? (
         <button
           className="admin-login"
           onClick={() => {
@@ -19,7 +19,7 @@ function Navbar() {
         >
           Admin Login
         </button>
-      )}
+      ) : null}
     </nav>
   );
 }

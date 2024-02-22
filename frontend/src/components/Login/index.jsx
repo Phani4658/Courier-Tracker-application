@@ -59,7 +59,7 @@ function Login() {
     <div>
       <Navbar />
       <div className="login-form-container">
-        <form>
+        <form className="login-form">
           <h1 className="login-heading">
             {pathname === "/login" ? "Login" : "Admin Login"}
           </h1>

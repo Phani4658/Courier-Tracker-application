@@ -7,6 +7,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.courier-item > *{
+    width: 20%;
+    text-align: center;
 }
 
 ul{
@@ -16,6 +22,7 @@ ul{
 .icons-container{
     display: flex;
     font-size: 18px;
+    justify-content: flex-end;
     gap: 8px;
 }
 
@@ -27,3 +34,4 @@ ul{
     border-radius: 6px;
     cursor: pointer;
 }
+

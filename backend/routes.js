@@ -96,6 +96,7 @@ router.post('/admin/login', async (req, res) => {
 
 // Create a new courier
 router.post('/couriers', isAdmin, async (req, res) => {
+  console.log(req.body);
     try {
         const courier = await Courier.create(req.body);
         res.status(201).json(courier);
@@ -113,6 +114,17 @@ router.get('/couriers', isAdmin, async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+router.get('/couriers/:id', isAdmin, async (req, res) => {
+  const { id } = req.params;
+  try {
+      const couriers = await Courier.findById(id);
+      res.json(couriers);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
 
 // Update a courier by ID
 router.put('/couriers/:id', isAdmin, async (req, res) => {
@@ -135,9 +147,5 @@ router.delete('/couriers/:id', isAdmin, async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 });
-
-module.exports = router;
-
-
 
 module.exports = router;
