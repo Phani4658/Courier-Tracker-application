@@ -11,7 +11,7 @@ function Home() {
 
   const getCourierDetails = async (e) => {
     e.preventDefault();
-    const apiUrl = `http://localhost:3015/couriers/${trackingNumber}`;
+    const apiUrl = `https://courier-tracker-backend.onrender.com/couriers/${trackingNumber}`;
     const jwtToken = Cookies.get("jwt_token");
     try{
       const response = await fetch(apiUrl,{headers: {

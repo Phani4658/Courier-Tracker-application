@@ -24,7 +24,7 @@ function AddCourier() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3015/admin/couriers", {
+      const response = await fetch("https://courier-tracker-backend.onrender.com/admin/couriers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

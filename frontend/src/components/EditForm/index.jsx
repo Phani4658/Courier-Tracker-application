@@ -19,7 +19,7 @@ const EditForm = () => {
     const jwtToken = Cookies.get("jwt_token");
 
     try {
-      const response = await fetch(`http://localhost:3015/admin/couriers/${id}`, {
+      const response = await fetch(`https://courier-tracker-backend.onrender.com/admin/couriers/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const EditForm = () => {
     const jwtToken = Cookies.get("jwt_token");
 
     try {
-      const response = await fetch(`http://localhost:3015/admin/couriers/${id}`, {
+      const response = await fetch(`https://courier-tracker-backend.onrender.com/admin/couriers/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

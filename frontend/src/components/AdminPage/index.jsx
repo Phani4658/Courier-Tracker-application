@@ -19,15 +19,18 @@ function AdminPage() {
   const navigate = useNavigate();
 
   const handleDeleteCourier = async (id) => {
-    const jwtToken = Cookies.get("jwt_token");
+    const jwtToken = Cookies.get("admin_jwt_token");
     try {
-      await fetch(`http://localhost:3015/admin/couriers/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: jwtToken,
-        },
-      });
+      await fetch(
+        `https://courier-tracker-backend.onrender.com/admin/couriers/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: jwtToken,
+          },
+        }
+      );
       // Refresh the list of couriers after deletion
       getCouriersList();
     } catch (error) {
@@ -36,8 +39,9 @@ function AdminPage() {
   };
 
   const getCouriersList = async () => {
-    const apiUrl = "http://localhost:3015/admin/couriers";
-    const jwtToken = Cookies.get("jwt_token");
+    const apiUrl =
+      "https://courier-tracker-backend.onrender.com/admin/couriers";
+    const jwtToken = Cookies.get("admin_jwt_token");
 
     try {
       const response = await fetch(apiUrl, {
