@@ -17,7 +17,7 @@ const EditForm = () => {
   }, [id]);
 
   const fetchCourier = async () => {
-    const jwtToken = Cookies.get("jwt_token");
+    const jwtToken = Cookies.get("admin_jwt_token");
 
     try {
       const response = await fetch(
