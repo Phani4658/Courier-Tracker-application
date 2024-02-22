@@ -1,5 +1,5 @@
 .top-section{
-    height: 35vh;
+    height: 30vh;
     background-color: darkorange;
 }
 
@@ -9,8 +9,8 @@
 
 .tracking-form-container{
     display: flex;
-    justify-content: center;
     height: 30vh;
+    justify-content: center;
     align-items: center;
 }
 
@@ -22,3 +22,44 @@
     width: 480px;
     margin-right: 15px;
 }
+
+.input-group {
+    display: flex;
+    width: 60%;
+    align-items: center;
+  }
+  
+  .input {
+    min-height: 50px;
+    padding: 0 1rem;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #5e4dcd;
+    border-radius: 6px 0 0 6px;
+    background-color: transparent;
+  }
+  
+  .button--submit {
+    min-height: 50px;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    background-color: #5e4dcd;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+  }
+  
+  .button--submit:hover {
+    background-color: #5e5dcd;
+  }
+  
+  .input:focus, .input:focus-visible {
+    border-color: #3898EC;
+    outline: none;
+  }
+  
+  .courier-details{
+    padding: 0 20px;
+  }

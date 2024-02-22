@@ -1,5 +1,6 @@
 import './index.css'
 
+// eslint-disable-next-line react/prop-types
 function FailureView({getCouriersList}) {
   return (
     <div className='failure-view'>

@@ -21,7 +21,7 @@ function AdminPage() {
   const handleDeleteCourier = async (id) => {
     const jwtToken = Cookies.get("jwt_token");
     try {
-      await fetch(`http://localhost:3015/couriers/${id}`, {
+      await fetch(`http://localhost:3015/admin/couriers/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function AdminPage() {
   };
 
   const getCouriersList = async () => {
-    const apiUrl = "http://localhost:3015/couriers";
+    const apiUrl = "http://localhost:3015/admin/couriers";
     const jwtToken = Cookies.get("jwt_token");
 
     try {
@@ -102,7 +102,6 @@ function AdminPage() {
   };
 
   const renderFinalView = () => {
-    console.log(apiStatus);
     switch (apiStatus) {
       case APIStatusConstants.SUCCESS:
         return renderSuccessView();

@@ -17,7 +17,7 @@ function CourierItem(props) {
     const formatDate = (dateString) => {
       const date = new Date(dateString);
       // Format the date as desired (e.g., 'MM/DD/YYYY')
-      const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+      const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
       return formattedDate;
     };
 
