@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./index.css";
 import Cookies from "js-cookie";
 import Navbar from "../Navbar";
