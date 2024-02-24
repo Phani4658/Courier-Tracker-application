@@ -88,10 +88,10 @@ function AdminPage() {
     return (
       <>
         <ul className="courier-list-headings">
+          <li className="courier-list-heading">Courier Name</li>
           <li className="courier-list-heading">Tracking Number</li>
-          <li className="courier-list-heading">Status</li>
-          <li className="courier-list-heading">Location</li>
-          <li className="courier-list-heading">Estimated Delivery Date</li>
+          <li className="courier-list-heading">Current Location</li>
+          <li className="courier-list-heading">Current Status</li>
         </ul>
         <ul className="">
           {couriersList.map((courier) => (

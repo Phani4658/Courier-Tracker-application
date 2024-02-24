@@ -27,25 +27,28 @@ function Home() {
     }
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const formattedDate = `${date.getDate()}/${
-      date.getMonth() + 1
-    }/${date.getFullYear()}`;
-    return formattedDate;
-  };
-
   return (
     <div>
       <section className="top-section">
-        <button
-          className="admin-button"
-          onClick={() => {
-            navigate("/admin/login");
-          }}
-        >
-          Admin
-        </button>
+        <div className="home-buttons">
+          <button
+            className="admin-button"
+            onClick={() => {
+              navigate("/admin/login");
+            }}
+          >
+            Admin
+          </button>
+          <button
+            className="admin-button"
+            onClick={() => {
+              Cookies.remove("jwt_token");
+              navigate("/login");
+            }}
+          >
+            Logout
+          </button>
+        </div>
         <h1 className="track-delivery">Tracking</h1>
       </section>
       <section className="tracking-form-container">
@@ -65,14 +68,47 @@ function Home() {
       {courierDetails && (
         <section className="courier-details-container">
           <div className="courier-details">
-            <h3>Courier Details</h3>
-            <p>Tracking Number: {courierDetails.trackingNumber}</p>
-            <p>Status: {courierDetails.status}</p>
-            <p>Location: {courierDetails.location}</p>
-            <p>
-              Estimated Delivery Date:{" "}
-              {formatDate(courierDetails.estimatedDeliveryDate)}
-            </p>
+            <h2>Courier Details</h2>
+            <div className="courier-detail-container">
+              <div>
+                <p>Courier Name: {courierDetails.courierName}</p>
+                <p>Tracking Number: {courierDetails.trackingNumber}</p>
+              </div>
+              <div>
+                <p>From: {courierDetails.fromAddress}</p>
+                <p>To: {courierDetails.toAddress}</p>
+              </div>
+              <p>
+                Estimated Delivery Date:{" "}
+                {new Date(
+                  courierDetails.estimatedDeliveryDate
+                ).toLocaleDateString()}
+              </p>
+            </div>
+            <h3>Tracking History</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Updated Date</th>
+                  <th>Updated Time</th>
+                  <th>Current Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                {courierDetails.trackingHistory.map((entry, index) => {
+                  console.log(entry);
+                  return (
+                    <tr key={index}>
+                      <td>{entry.status}</td>
+                      <td>{new Date(entry.timestamp).toLocaleDateString()}</td>
+                      <td>{new Date(entry.timestamp).toLocaleTimeString()}</td>
+                      <td>{entry.currentLocation}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </section>
       )}

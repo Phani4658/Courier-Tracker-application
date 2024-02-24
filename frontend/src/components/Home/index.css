@@ -55,7 +55,7 @@
   height: 20vh;
 }
 
-.track-button{
+.track-button {
   background-color: #387adf;
   margin-top: 10px;
   align-self: flex-end;
@@ -68,8 +68,8 @@
   cursor: pointer;
 }
 
-.admin-button{
-  margin: 10px 20px;
+.admin-button {
+  margin: 10px 10px;
   align-self: flex-end;
   background: #387adf;
   border: none;
@@ -81,26 +81,64 @@
   cursor: pointer;
 }
 
-.button-container{
+.button-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
 }
 
-h1{
+h1 {
   margin: 0;
 }
 
-.courier-details-container{
+.courier-details-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 35vh;
 }
 
-@media screen and (max-width:767px){
-  .tracking-form{
+@media screen and (max-width: 767px) {
+  .tracking-form {
     width: 80%;
   }
+}
+table {
+  width: 80vw;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.courier-detail-container{
+  display: flex;
+}
+
+.courier-detail-container > *{
+  flex-grow: 1;
+}
+
+.home-buttons{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }

@@ -12,21 +12,12 @@ function CourierItem(props) {
     deleteCourier(courierDetails._id);
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    // Format the date as desired (e.g., 'MM/DD/YYYY')
-    const formattedDate = `${date.getDate()}/${
-      date.getMonth() + 1
-    }/${date.getFullYear()}`;
-    return formattedDate;
-  };
-
   return (
     <li className="courier-item">
+      <p>{courierDetails.courierName}</p>
       <p>{courierDetails.trackingNumber}</p>
+      <p>{courierDetails.currentLocation}</p>
       <p>{courierDetails.status}</p>
-      <p>{courierDetails.location}</p>
-      <p>{formatDate(courierDetails.estimatedDeliveryDate)}</p>
       <div className="icons-container">
         <MdEdit
           className="icon"
