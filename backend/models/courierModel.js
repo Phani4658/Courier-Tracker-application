@@ -1,29 +1,59 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const courierSchema = new mongoose.Schema({
-    trackingNumber: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    status: {
-        type: String,
-        enum: ['Shipped', 'In Transit', 'Out for Delivery', 'Delivered'],
-        default: 'Shipped'
-    },
-    location: {
-        type: String,
-        required: true
-    },
-    estimatedDeliveryDate: {
-        type: Date
-    },
-    updated_at: {
+  courierName: {
+    type: String,
+    required: true,
+  },
+  trackingNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  status: {
+    type: String,
+    enum: [
+      "Order Placed",
+      "Order Packed",
+      "Shipped",
+      "In Transit",
+      "Out for Delivery",
+      "Delivered",
+    ],
+    default: "Order Placed",
+  },
+  fromAddress: {
+    type: String,
+    required: true,
+  },
+  toAddress: {
+    type: String,
+    required: true,
+  },
+  currentLocation: {
+    type: String,
+    required: true,
+  },
+  estimatedDeliveryDate: {
+    type: Date,
+    default: Date.now,
+  },
+  trackingHistory: [
+    {
+      status: String,
+      currentLocation: String,
+      timestamp: {
         type: Date,
-        default: Date.now
-    }
+        default: Date.now,
+      },
+      modifiedAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
-const Courier = mongoose.model('Courier', courierSchema);
+const Courier = mongoose.model("Courier", courierSchema);
 
 module.exports = Courier;

@@ -6,9 +6,21 @@ const { isAdmin } = require("../authMiddleware");
 // Create courier
 router.post("/admin/couriers", isAdmin, async (req, res) => {
   try {
-    const courier = await Courier.create(req.body);
+    let courierDetails = req.body;
+    courierDetails = {
+      ...courierDetails,
+      trackingHistory: [
+        {
+          status: courierDetails.status,
+          timestamp: new Date(),
+          currentLocation: courierDetails.currentLocation,
+        },
+      ],
+    };
+    const courier = await Courier.create(courierDetails);
     res.status(201).json(courier);
   } catch (error) {
+    console.log(error.message);
     res.status(400).json({ message: error.message });
   }
 });
@@ -37,11 +49,38 @@ router.get("/admin/couriers/:id", isAdmin, async (req, res) => {
 // Update courier by ID
 router.put("/admin/couriers/:id", isAdmin, async (req, res) => {
   const { id } = req.params;
+  const { status, currentLocation, ...otherFields } = req.body;
+
   try {
-    const updatedCourier = await Courier.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    res.json(updatedCourier);
+    const courier = await Courier.findById(id);
+
+    if (!courier) {
+      return res.status(404).json({ message: "Courier not found" });
+    }
+
+    // Update other fields
+    Object.assign(courier, otherFields);
+
+    // Track changes in status
+    if (
+      status ||
+      (currentLocation &&
+        (status !== courier.status ||
+          currentLocation != courier.currentLocation))
+    ) {
+      courier.trackingHistory.push({
+        status: courier.status,
+        timestamp: new Date(),
+        currentLocation: currentLocation,
+      });
+      courier.status = status;
+      courier.currentLocation = currentLocation;
+    }
+
+    // Save the updated courier
+    await courier.save();
+
+    res.json(courier);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
