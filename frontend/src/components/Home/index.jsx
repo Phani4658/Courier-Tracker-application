@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const [trackingNumber, setTrackingNumber] = useState("");
   const [courierDetails, setCourierDetails] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate("");
 
   const getCourierDetails = async (e) => {
     e.preventDefault();
     setCourierDetails(null);
+    setLoading(true);
     const apiUrl = `https://courier-tracker-backend.onrender.com/couriers/${trackingNumber}`;
     const jwtToken = Cookies.get("jwt_token");
     try {
@@ -19,9 +21,15 @@ function Home() {
           Authorization: jwtToken,
         },
       });
-      const data = await response.json();
-      console.log(data);
-      setCourierDetails(data);
+      if (response.ok) {
+        const data = await response.json();
+        setTrackingNumber("");
+        setCourierDetails(data);
+        setLoading(false);
+      } else {
+        alert("Something went wrong");
+        setLoading(false);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -60,8 +68,8 @@ function Home() {
             value={trackingNumber}
             onChange={(e) => setTrackingNumber(e.target.value)}
           />
-          <button className="track-button" type="submit">
-            Track
+          <button className="track-button" disabled={loading} type="submit">
+            {loading ? "Loading" : "Track"}
           </button>
         </form>
       </section>
