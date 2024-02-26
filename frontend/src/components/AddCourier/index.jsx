@@ -86,7 +86,7 @@ function AddCourier() {
 
   const renderIntialView = () => (
     <div className="courier-form-container">
-      <CourierForm handleSubmit={handleSubmit} isAddCourier={true} trackingNumber={trackingNumber} />
+      <CourierForm handleSubmit={handleSubmit} isAddCourier={true} newTrackingNumber={trackingNumber} />
     </div>
   );
 

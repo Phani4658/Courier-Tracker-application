@@ -30,7 +30,9 @@ function CourierForm({
           .split("T")[0];
         setEstimatedDeliveryDate(formattedDate);
       }
-    } else if (newTrackingNumber) {
+    } 
+    console.log(newTrackingNumber);
+    if (newTrackingNumber != "") {
       setTrackingNumber(newTrackingNumber);
     }
   }, [courierDetails, newTrackingNumber]);
