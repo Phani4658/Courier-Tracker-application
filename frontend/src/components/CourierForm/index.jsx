@@ -2,7 +2,12 @@
 import "./index.css";
 import { useEffect, useState } from "react";
 
-function CourierForm({ handleSubmit, courierDetails, isAddCourier }) {
+function CourierForm({
+  handleSubmit,
+  courierDetails,
+  isAddCourier,
+  newTrackingNumber,
+}) {
   const [courierName, setCourierName] = useState("");
   const [trackingNumber, setTrackingNumber] = useState("");
   const [status, setStatus] = useState("Order Placed");
@@ -25,8 +30,10 @@ function CourierForm({ handleSubmit, courierDetails, isAddCourier }) {
           .split("T")[0];
         setEstimatedDeliveryDate(formattedDate);
       }
+    } else if (newTrackingNumber) {
+      setTrackingNumber(newTrackingNumber);
     }
-  }, [courierDetails]);
+  }, [courierDetails, newTrackingNumber]);
 
   const onClickSubmitButton = (event) => {
     const courierDetails = {
@@ -40,14 +47,6 @@ function CourierForm({ handleSubmit, courierDetails, isAddCourier }) {
     };
     handleSubmit(event, courierDetails);
   };
-
-  const generateTrackingNumber = () => {
-    return Math.floor(10000000 + Math.random() * 90000000).toString();
-  };
-
-  useEffect(() => {
-    setTrackingNumber(generateTrackingNumber());
-  }, []);
 
   return (
     <form onSubmit={onClickSubmitButton} className="courier-form">

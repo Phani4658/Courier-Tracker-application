@@ -74,36 +74,41 @@ const EditForm = () => {
       }
 
       alert("Courier order updated successfully");
-      navigate('/admin');
+      navigate("/admin");
     } catch (error) {
       alert("Error updating courier order");
     }
   };
 
-  return apiStatus === APIStatusConstants.INITIAL ? (
+  return (
     <>
       <Navbar />
-      <section className="top-heading-container">
-        <button
-          className="icon-container"
-          onClick={() => {
-            navigate("/admin");
-          }}
-        >
-          <IoMdArrowRoundBack />
-        </button>
-        <h2>Edit Courier Order</h2>
-      </section>
-      <div className="courier-form-container">
-        <CourierForm
-          courierDetails={courierDetails}
-          handleSubmit={handleSubmit}
-          isAddCourier={false}
-        />
-      </div>
+      {apiStatus === APIStatusConstants.INITIAL ? (
+        <>
+          <section className="top-heading-container">
+            <button
+              className="icon-container"
+              onClick={() => {
+                navigate("/admin");
+              }}
+            >
+              <IoMdArrowRoundBack />
+            </button>
+            <h2>Edit Courier Order</h2>
+          </section>
+          <div className="courier-form-container">
+            <CourierForm
+              courierDetails={courierDetails}
+              handleSubmit={handleSubmit}
+              isAddCourier={false}
+            />
+          </div>
+        </>
+      ) : (
+        <LoadingView />
+      )}
+      ;
     </>
-  ) : (
-    <LoadingView />
   );
 };
 

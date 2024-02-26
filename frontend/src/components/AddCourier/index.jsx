@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
 import Cookies from "js-cookie";
 import Navbar from "../Navbar";
@@ -16,8 +16,17 @@ const APIStatusConstants = {
 
 function AddCourier() {
   const [addedCourierDetails, setAddCourierDetails] = useState({});
+  const [trackingNumber,setTrackingNumber] = useState({});
   const [apiStatus, setApiStatus] = useState(APIStatusConstants.INITIAL);
   const navigate = useNavigate();
+
+  const generateTrackingNumber = () => {
+    return Math.floor(10000000 + Math.random() * 90000000).toString();
+  };
+
+  useEffect(() => {
+    setTrackingNumber(generateTrackingNumber());
+  }, []);
 
   const handleSubmit = async (e, courierDetails) => {
     e.preventDefault();
@@ -77,7 +86,7 @@ function AddCourier() {
 
   const renderIntialView = () => (
     <div className="courier-form-container">
-      <CourierForm handleSubmit={handleSubmit} isAddCourier={true} />
+      <CourierForm handleSubmit={handleSubmit} isAddCourier={true} trackingNumber={trackingNumber} />
     </div>
   );
 
