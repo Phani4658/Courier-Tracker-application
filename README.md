@@ -1,102 +1,75 @@
-# Courier Tracking System
+# Courier Tracker
 
-This is a web-based courier tracking system developed using the MERN (MongoDB, Express, React, Node) stack. The system allows users to track courier packages and provides an admin panel for managing courier tracking data.
+This project includes both a client and a server.
 
-## Live Deployment
+## Getting Started
 
-The project is deployed live at: [Courier Tracking System](https://courier-tracker-bice.vercel.app/)
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Demo Credentials
+### Prerequisites
 
-### Admin
-- Username: admin
-- Password: admin123
+- Node.js
+- npm
 
-### User
-- Username: user
-- Password: user123
+### Installing
 
-## Features
+1. Clone the repository:  [https://github.com/axxxay/product-tracker.git]
 
-- **User Interface**: Provides a user-friendly interface for tracking courier packages.
-- **Authentication**: Implements a simple authentication mechanism for tracking updates.
-- **Admin Panel**: Includes an admin panel for managing courier tracking data.
-- **CRUD Operations**: Allows administrators to perform CRUD operations on courier tracking data.
-- **RESTful API**: Implements a RESTful API for handling package tracking data.
+2. Navigate into the project directory:  ```cd victaman```
 
-## Technologies Used
 
-- **Frontend**:
+### Client
 
-  - React
-  - React Router dom for routing
-  - CSS for styling
+The client is a React application.
 
-- **Backend**:
-  - Node.js
-  - Express.js
-  - MongoDB Atlas for database
+1. Navigate into the client directory:  ```cd client```
 
-## Installation and Setup
+2. Install the dependencies:  `npm install`
 
-1. Clone the repository:
+3. Start the client:  `npm start`
 
-```
-git clone git@github.com:Phani4658/Courier-Tracker-application.git
-```
+The client will start on [http://localhost:5173](http://localhost:5173) (or another port if 5173 is busy).
 
-2. Install dependencies:
+### Server
 
-```
-cd courier-tracking-system/backend
-npm install
-```
+The server is a Node.js application.
 
-3. Set up environment variables:
+1. Navigate into the server directory (from the root of the project):  `cd server`
 
-   - Create a `.env` file in the root directory.
-   - Add environment variables such as `DB_URI` for MongoDB connection, `JWT_SECRET` for JWT token, etc.
+2. Install the dependencies:  `npm install`
 
-4. Run the development server:
+3. Start the server:  `node app.js` or `nodemon app.js`
 
-```
-nodemon index
-```
+The server will start on [http://localhost:3015].
 
-5. In another terminal:
 
-```
-cd courier-tracking-system/frontend
-npm install
-```
+## Login Credentials
 
-6. Run the frontend:
+The application consists both user and admin login.
 
-```
-npm run dev
-```
+### User Login
 
-7. Open your browser and visit `http://localhost:3000` to access the application.
+username: `user`
+password: `user123`
 
-## Usage
 
-- **User Interface**:
+### Admin Login
+username: `admin`
+password: `admin123`
 
-  - Visit the homepage to track a courier package by entering its tracking number.
-  - View the tracking information, including the package's current status and location.
 
-- **Admin Panel**:
-  - Access the admin panel by logging in as an administrator.
-  - Add, update, or delete tracking information as required.
 
-## API Endpoints
+## Deployment
 
-- **POST /register**: Register a new user.
-- **POST /login**: User login.
-- **POST /admin/login**: Admin login.
-- **POST /couriers**: Create a new courier.
-- **GET /couriers**: Get all couriers.
-- **GET /admin/couriers/:id**: Get courier by ID.
-- **GET /couriers/:trackingNumber**: Get courier by tracking number.
-- **PUT /couriers/:id**: Update courier by ID.
-- **DELETE /couriers/:id**: Delete courier by ID.
+server deployed in [render.com]: [https://courier-tracker-backend.onrender.com]
+
+frontend deployed in [vercel.com]: [https://courier-tracker-bice.vercel.app/]
+
+## Built With
+
+- [React](https://reactjs.org/) - The web framework used
+- [Node.js](https://nodejs.org/) - The server environment
+
+## Authors
+
+- Phani Peddapalem - Initial work - [Phani4658](https://github.com/Phani4658)
