@@ -32,7 +32,7 @@ function CourierForm({
       }
     } 
     console.log(newTrackingNumber);
-    if (newTrackingNumber != "") {
+    if (newTrackingNumber) {
       setTrackingNumber(newTrackingNumber);
     }
   }, [courierDetails, newTrackingNumber]);
